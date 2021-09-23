@@ -1,0 +1,116 @@
+﻿大作业1： 编程题
+用java代码写，把咱们班33个人的名字 形成 一个集合， 
+运行后随机点一个人的名字，就把这个人的名字移除。 再次
+点名是 点 32个人的随机中的一个。
+
+while循环
+
+大作业2：编程题，
+使用 java 代码编写， 
+有一个双端队列集合， 里面有 10 条数据，
+查询出  第5个人是什么数据，
+左边弹出1个 ， 右边弹出1个，打印还剩多少条数据，
+然后，再 第3个数据前面，插入一个数据，
+然后，进行查询全部数据进行查看。
+
+
+大作业3：
+注意： 此作业需要手写， 
+需要 在 机器上先操作一次，写到本子上，进行拍照，打包发给组长 
+
+1、 Keys相关的命令操作：
+
+（1） 查看key是否存在：
+set knames wy
+ exists knames 
+
+（2） 查找满足 x开头的   的keys（需要在数据库中添加若干个 x开头的 几个单词）：
+scan 0 MATCH x* count 14
+ keys x*
+
+（3） 查看key的超时时间：setex 设置过期时间，存的时候就给定一个过期时间
+setex code 60 888
+ttl code
+ 
+
+（4） 遍历key：
+
+ keys *
+
+（5） 返回key的值的序列化：
+dump name
+ 
+
+ 
+
+2、 string类型数据的命令操作：
+
+（1） 设置键值：
+set age 22
+
+（2） 读取键值：
+ get age
+
+（3） 数值类型自增1：
+ incr age
+
+（4） 数值类型自减1：
+decr age
+
+（5） 查看值的长度：
+strlen person
+ 
+
+ 
+
+3、 list类型数据的命令操作：
+
+（1）对列表city插入元素：nanjing Suzhou Hangzhou wuxi
+
+  lpush city nanjing Suzhou Hangzhou wuxi
+
+（2）将列表city里的头部的元素移除
+
+  lpop city
+
+（3）将name列表的尾部元素移除到number列表的头部
+lpush name ww tt yy
+ lpush number abc
+
+ rpoplpush name number
+
+ lrange city 0 -1
+
+ 
+
+（4） 对一个已存在的列表插入新元素
+
+  linsert number before 'abc' 'wy'
+
+（5）查看list的值长度
+llen city
+ 
+
+ 
+
+4、 hash类型数据的命令操作：
+
+（1） 设置一个hash表，order表里包括的键值信息有：id：1,customer_name：张三
+
+ hmset order id 1 customer_name zhangsan
+hmget order id customer_name
+
+（2） 创建一个hash表，表里的键值批量插入
+
+ hmset order id2 2 customer_name2 zhaosi
+
+（3） 获取order对应的map的所有key
+ hkeys order
+ 
+
+（4） 获取order对应的map的键值数量
+hgetall order
+ 
+
+（5） 获取order表里的id值
+hget order id
